@@ -1,7 +1,7 @@
 from datetime import date, datetime
 from pydantic import BaseModel
 
-class User(BaseModel):
+class user(BaseModel):
     id: str
     name: str
     department: str | None = None
