@@ -1,10 +1,7 @@
-from sqlalchemy.orm import sesion
+from sqlalchemy.orm import Session
+from ..models.userentity import User
 from ..repositories import repository
-from ..models.userEntity import User
 
 class UserService:
-    def __init__(self, repository: repository):
-        self.repository = repository
-
-def get_all_users(self, db: sesion) -> list[User]:
-    return self.repository.find_all_users(db)
+        def get_all_users(self, db: Session) -> list[User]:
+            return repository.find_all_users(db)
