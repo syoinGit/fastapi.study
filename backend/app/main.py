@@ -2,9 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .core.config import settings
 from .core.db import Base, engine
-
-from .schemas import user
-from .api.v1.users import users
+from .api.v1 import users
 
 app = FastAPI()
 
