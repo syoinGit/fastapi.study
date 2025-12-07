@@ -1,0 +1,14 @@
+{
+    "name": "Debug FastAPI",
+    "type": "python",
+    "request": "launch",
+    "module": "uvicorn",
+    "args": [
+        "backend.app.main:app",
+        "--reload"
+    ],
+    "jinja": true,
+    "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+    }
+}
