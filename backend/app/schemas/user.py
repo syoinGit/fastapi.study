@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 # ===== Base =====
 class UserBase(BaseModel):
@@ -7,6 +7,8 @@ class UserBase(BaseModel):
     department: str | None = None
     position: str | None = None
     hire_date: date | None = None
+
+    model_config = ConfigDict(from_attributes=True)
 
 
 # ===== Create (POST) =====
@@ -28,5 +30,4 @@ class User(UserBase):
     created_at: datetime
     updated_at: datetime
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)

@@ -7,8 +7,22 @@ import os
 load_dotenv()
 
 DB_URL = os.getenv("DB_URL")
-engine = create_engine(DB_URL, echo=True)
+
+engine = create_engine(
+    f"{DB_URL}&charset=utf8mb4",
+    connect_args={
+        "charset": "utf8mb4",
+        "use_unicode": True,
+        "init_command": "SET NAMES utf8mb4"
+    },
+    echo=True
+)
+
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def find_all_users(db: Session) -> list[User]:
-    return db.query(User).all()
+    rows = db.query(User).all()
+    # ここで中身を確認する
+    for u in rows:
+        print("row:", u.name, u.department, u.position, u.hire_date)
+    return rows
