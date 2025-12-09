@@ -1,17 +1,21 @@
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+
 from .core.config import settings
 from .core.db import Base, engine
 from .api.v1 import users
 
-app = FastAPI()
+class UTF8JSONResponse(JSONResponse):
+    media_type = "application/json; charset=utf-8"
 
+app = FastAPI(default_response_class=UTF8JSONResponse)
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+CORSMiddleware,
+allow_origins=settings.CORS_ORIGINS,
+allow_credentials=True,
+allow_methods=["*"],
+allow_headers=["*"],
 )
 
 # 学習・開発中のみ（本番は Alembic）
