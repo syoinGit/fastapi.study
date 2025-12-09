@@ -3,7 +3,6 @@ from sqlalchemy.orm import sessionmaker, declarative_base, Session
 
 from .config import settings  # DB_URLを持ってるSettings
 
-# ---- Engine ----
 engine = create_engine(
     settings.DB_URL,
     future=True,
@@ -12,7 +11,6 @@ engine = create_engine(
     connect_args={"charset": "utf8mb4"},
 )
 
-# ---- Session ----
 SessionLocal = sessionmaker(
     bind=engine,
     autoflush=False,

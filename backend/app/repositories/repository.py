@@ -22,7 +22,4 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def find_all_users(db: Session) -> list[User]:
     rows = db.query(User).all()
-    # ここで中身を確認する
-    for u in rows:
-        print("row:", u.name, u.department, u.position, u.hire_date)
     return rows
