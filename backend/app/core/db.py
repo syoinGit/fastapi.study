@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
-
 from .config import settings  # DB_URLを持ってるSettings
 
 engine = create_engine(

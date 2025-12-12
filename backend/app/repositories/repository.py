@@ -1,6 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from ..models.userentity import User
+from ..models.attendances import Attendances
+
 from dotenv import load_dotenv
 import os
 
@@ -22,4 +24,8 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def find_all_users(db: Session) -> list[User]:
     rows = db.query(User).all()
+    return rows
+
+def find_all_attendances(db:Session) -> list[Attendances]:
+    rows = db.query(Attendances).all()
     return rows
