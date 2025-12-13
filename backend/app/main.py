@@ -1,10 +1,9 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-
 from .core.config import settings
 from .core.db import Base, engine
-from .api.v1 import users
+from .api.v1 import users, attendances
 
 class UTF8JSONResponse(JSONResponse):
     media_type = "application/json; charset=utf-8"
@@ -23,3 +22,4 @@ Base.metadata.create_all(bind=engine)
 
 API_PREFIX = "/api/v1"
 app.include_router(users.router,  prefix=API_PREFIX)
+app.include_router(attendances.router, prefix=API_PREFIX)
