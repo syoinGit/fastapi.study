@@ -1,4 +1,3 @@
-# schemas/attendance.py
 from pydantic import BaseModel
 from datetime import date, datetime
 from typing import Optional
@@ -13,5 +12,18 @@ class AttendanceBase(BaseModel):
 
     break_minutes: Optional[int] = None
     total_work_minutes: Optional[int] = None
+
+    status: AttendancesStatus
+
+
+class AttendanceCreate(BaseModel):
+    user_id: str
+    work_date: date
+
+    clock_in: datetime | None = None
+    clock_out: datetime | None = None
+
+    break_minutes: int | None = None
+    total_work_minutes: int | None = None
 
     status: AttendancesStatus
