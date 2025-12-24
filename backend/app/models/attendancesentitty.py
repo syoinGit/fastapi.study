@@ -1,3 +1,4 @@
+import uuid
 from sqlalchemy import Column, String, Integer, Date, DateTime, Enum as SqlEnum, ForeignKey
 from sqlalchemy.orm import relationship
 from ..enums.attendancesstatus import AttendancesStatus
@@ -6,8 +7,12 @@ from ..core.db import Base
 
 class Attendances(Base):
     __tablename__ = "attendances"
-    id = Column (String(36), primary_key=True)
-    
+    id = Column(
+    String(36),
+    primary_key=True,
+    default=lambda: str(uuid.uuid4()),
+)
+
     user_id = Column(
         String(36),
         ForeignKey("users.id"),

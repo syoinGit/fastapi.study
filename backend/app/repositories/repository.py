@@ -17,7 +17,7 @@ def find_user_detail(db:Session) -> list[User]:
         .all()
     )
 
-def crate_attendances(db:Session, attendance: Attendances) -> Attendances:
+def create_attendances(db:Session, attendance: Attendances) -> Attendances:
  db.add(attendance)
  db.commit()
  db.refresh(attendance)
