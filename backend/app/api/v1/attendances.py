@@ -20,3 +20,4 @@ def create_attendance(
   service: AttendancesService = Depends(AttendancesService),
 ):
   return service.create_attendances(db, data)
+

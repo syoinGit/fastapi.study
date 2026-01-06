@@ -6,8 +6,7 @@ from ..schemas.attendance import AttendanceCreate
 class AttendancesService:
     def get_all_attendances(self, db:Session) -> list[Attendances]:
         return repository.find_all_attendances(db)
-    
-
+        
     def create_attendances(
             self,
             db: Session,
